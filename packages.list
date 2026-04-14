@@ -1,0 +1,76 @@
+# Fedora packages — installed by setup.sh via dnf
+# Lines starting with # are ignored
+
+# Shell & terminal
+zsh
+ghostty
+
+# Editors
+vim
+
+# Browsers
+chromium
+firefox
+
+# Media
+mpv
+libreoffice
+
+# Node.js ecosystem
+nodejs
+npm
+yarnpkg
+
+# Version control
+git
+gh
+# glab: requires copr — handled separately in setup.sh
+
+# Build tools
+curl
+wget
+cmake
+gcc-c++
+make
+just
+rsync
+
+# Languages
+# rust/cargo/rustfmt/clippy: managed via rustup — handled separately in setup.sh
+golang
+python3-devel
+python3-pip
+python3-virtualenv
+
+# Containers & virtualisation
+podman
+skopeo
+buildah
+libvirt
+libvirt-client
+qemu-kvm
+virt-viewer
+libguestfs-tools
+guestfs-tools
+
+# CLI tools
+fzf
+lsd
+unzip
+jq
+ripgrep
+fd-find
+ShellCheck
+lshw
+
+# Automation
+ansible-core
+
+# VPN & networking
+strongswan
+nm-connection-editor
+network-manager-strongswan
+NetworkManager-l2tp-gnome
+
+# App distribution
+flatpak
