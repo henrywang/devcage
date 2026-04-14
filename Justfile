@@ -33,6 +33,8 @@ configs:
     done
     ln -sf "$REPO/home/.zshenv" "$HOME/.zshenv"
     echo "  ~/.zshenv -> $REPO/home/.zshenv"
+    ln -sf "$REPO/home/.CLAUDE.md" "$HOME/.CLAUDE.md"
+    echo "  ~/.CLAUDE.md -> $REPO/home/.CLAUDE.md"
 
 # Deploy system-level files (requires sudo)
 system-files:

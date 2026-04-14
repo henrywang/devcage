@@ -82,9 +82,11 @@ done
 # ============================================================
 # 4. ~/.zshenv bootstrap (sets ZDOTDIR for SSH / non-Ghostty)
 # ============================================================
-log "Deploying ~/.zshenv"
+log "Deploying ~/.zshenv and ~/.CLAUDE.md"
 ln -sf "$REPO/home/.zshenv" "$HOME/.zshenv"
 ok "~/.zshenv -> $REPO/home/.zshenv"
+ln -sf "$REPO/home/.CLAUDE.md" "$HOME/.CLAUDE.md"
+ok "~/.CLAUDE.md -> $REPO/home/.CLAUDE.md"
 
 # ============================================================
 # 5. System files
