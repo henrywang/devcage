@@ -48,8 +48,10 @@ hi Todo            ctermfg=0   ctermbg=3    guifg=#1d1f21  guibg=#e9c880
 hi MatchParen      ctermfg=0   ctermbg=11   guifg=#1d1f21  guibg=#e1c65e  cterm=NONE gui=NONE
 
 " ── Spelling ────────────────────────────────────────────────────────────────
-hi SpellBad        ctermfg=9   cterm=underline guifg=#c55757  gui=underline
-hi SpellCap        ctermfg=4   cterm=underline guifg=#88a1bb  gui=underline
+hi SpellBad        ctermfg=9   ctermbg=NONE cterm=underline guifg=#c55757  guibg=NONE gui=underline
+hi SpellCap        ctermfg=4   ctermbg=NONE cterm=underline guifg=#88a1bb  guibg=NONE gui=underline
+hi SpellRare       ctermfg=13  ctermbg=NONE cterm=underline guifg=#bc99d4  guibg=NONE gui=underline
+hi SpellLocal      ctermfg=6   ctermbg=NONE cterm=underline guifg=#95bdb7  guibg=NONE gui=underline
 
 " ── Syntax ──────────────────────────────────────────────────────────────────
 hi Comment         ctermfg=8   guifg=#666666  cterm=italic gui=italic
@@ -81,6 +83,14 @@ hi DiffAdd         ctermfg=2   ctermbg=NONE guifg=#b7bd73  guibg=NONE
 hi DiffDelete      ctermfg=1   ctermbg=NONE guifg=#bf6b69  guibg=NONE
 hi DiffChange      ctermfg=3   ctermbg=NONE guifg=#e9c880  guibg=NONE
 hi DiffText        ctermfg=0   ctermbg=3    guifg=#1d1f21  guibg=#e9c880  cterm=NONE gui=NONE
+
+" ── ALE ─────────────────────────────────────────────────────────────────────
+hi ALEError        ctermfg=9   ctermbg=NONE guifg=#c55757  guibg=NONE cterm=underline gui=underline
+hi ALEWarning      ctermfg=3   ctermbg=NONE guifg=#e9c880  guibg=NONE cterm=underline gui=underline
+hi ALEInfo         ctermfg=4   ctermbg=NONE guifg=#88a1bb  guibg=NONE cterm=underline gui=underline
+hi ALEErrorSign    ctermfg=9   ctermbg=NONE guifg=#c55757  guibg=NONE
+hi ALEWarningSign  ctermfg=3   ctermbg=NONE guifg=#e9c880  guibg=NONE
+hi ALEInfoSign     ctermfg=4   ctermbg=NONE guifg=#88a1bb  guibg=NONE
 
 " ── Git gutter ──────────────────────────────────────────────────────────────
 hi GitGutterAdd    ctermfg=2   guifg=#b7bd73

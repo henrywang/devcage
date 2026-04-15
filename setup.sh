@@ -96,6 +96,9 @@ log "Deploying system files"
 sudo cp "$REPO/system/modules-load.d/l2tp.conf" /etc/modules-load.d/l2tp.conf
 ok "/etc/modules-load.d/l2tp.conf"
 
+sudo cp "$REPO/system/modprobe.d/l2tp-unblacklist.conf" /etc/modprobe.d/l2tp-unblacklist.conf
+ok "/etc/modprobe.d/l2tp-unblacklist.conf"
+
 sudo cp "$REPO/system/sudoers.d/wheel-nopasswd" /etc/sudoers.d/wheel-nopasswd
 sudo chmod 440 /etc/sudoers.d/wheel-nopasswd
 ok "/etc/sudoers.d/wheel-nopasswd"
