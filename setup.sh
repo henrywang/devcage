@@ -88,6 +88,13 @@ ok "~/.zshenv -> $REPO/home/.zshenv"
 ln -sf "$REPO/home/.CLAUDE.md" "$HOME/.CLAUDE.md"
 ok "~/.CLAUDE.md -> $REPO/home/.CLAUDE.md"
 
+log "Deploying Claude Code config"
+mkdir -p "$HOME/.claude/agents"
+ln -sf "$REPO/home/.claude/settings.json" "$HOME/.claude/settings.json"
+ok "~/.claude/settings.json -> $REPO/home/.claude/settings.json"
+ln -sf "$REPO/home/.claude/agents/shell-runner.md" "$HOME/.claude/agents/shell-runner.md"
+ok "~/.claude/agents/shell-runner.md -> $REPO/home/.claude/agents/shell-runner.md"
+
 # ============================================================
 # 5. System files
 # ============================================================
