@@ -45,6 +45,9 @@ system-files:
     sudo cp system/NetworkManager/dispatcher.d/99-cn-split-tunnel.sh \
         /etc/NetworkManager/dispatcher.d/99-cn-split-tunnel.sh
     sudo chmod 755 /etc/NetworkManager/dispatcher.d/99-cn-split-tunnel.sh
+    sudo cp system/systemd/system-sleep/iwlwifi-reset.sh \
+        /usr/lib/systemd/system-sleep/iwlwifi-reset.sh
+    sudo chmod 755 /usr/lib/systemd/system-sleep/iwlwifi-reset.sh
 
 # Clone Zsh plugins into ~/.config/zsh/
 zsh-plugins:

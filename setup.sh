@@ -115,6 +115,11 @@ sudo cp "$REPO/system/NetworkManager/dispatcher.d/99-cn-split-tunnel.sh" \
 sudo chmod 755 /etc/NetworkManager/dispatcher.d/99-cn-split-tunnel.sh
 ok "/etc/NetworkManager/dispatcher.d/99-cn-split-tunnel.sh"
 
+sudo cp "$REPO/system/systemd/system-sleep/iwlwifi-reset.sh" \
+    /usr/lib/systemd/system-sleep/iwlwifi-reset.sh
+sudo chmod 755 /usr/lib/systemd/system-sleep/iwlwifi-reset.sh
+ok "/usr/lib/systemd/system-sleep/iwlwifi-reset.sh"
+
 if ! lsmod | grep -q l2tp_core; then
     sudo modprobe l2tp_core l2tp_netlink l2tp_ppp l2tp_ip
     ok "l2tp modules loaded"
