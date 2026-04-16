@@ -49,6 +49,7 @@ if ! flatpak info md.obsidian.Obsidian &>/dev/null 2>&1; then
 else
     ok "Obsidian already installed"
 fi
+flatpak override --user --socket=wayland --env=ELECTRON_OZONE_PLATFORM_HINT=auto md.obsidian.Obsidian
 
 log "Installing Zed via Flatpak"
 if ! flatpak info dev.zed.Zed &>/dev/null 2>&1; then
