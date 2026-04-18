@@ -23,9 +23,6 @@ if command -v secret-tool &>/dev/null && [[ -n "$WAYLAND_DISPLAY" || -n "$DISPLA
         [[ -n "$value" ]] && export "$var_name"="$value"
     }
 
-    _load_secret ANTHROPIC_VERTEX_PROJECT_ID anthropic project_id
-    _load_secret CLOUD_ML_REGION anthropic region
-    _load_secret GOOGLE_CLOUD_PROJECT gcloud project_id
     _load_secret GH_TOKEN github token
 
     unset -f _load_secret
