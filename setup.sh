@@ -105,6 +105,9 @@ ln -sf "$REPO/home/.claude/settings.json" "$HOME/.claude/settings.json"
 ok "~/.claude/settings.json -> $REPO/home/.claude/settings.json"
 ln -sf "$REPO/home/.claude/agents/shell-runner.md" "$HOME/.claude/agents/shell-runner.md"
 ok "~/.claude/agents/shell-runner.md -> $REPO/home/.claude/agents/shell-runner.md"
+mkdir -p "$HOME/.claude/skills"
+ln -sfn "$REPO/home/.claude/skills/sync-notes" "$HOME/.claude/skills/sync-notes"
+ok "~/.claude/skills/sync-notes -> $REPO/home/.claude/skills/sync-notes"
 
 # ============================================================
 # 5. System files
