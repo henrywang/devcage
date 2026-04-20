@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Host wrapper for the obsidian-cli bundled inside the Obsidian Flatpak.
+# The sandbox puts its XDG_RUNTIME_DIR under /run/user/$UID/.flatpak/<app-id>/xdg-run,
+# so the plugin socket .obsidian-cli.sock lives there — not in the host's /run/user/$UID.
+# See docs/obsidian-flatpak.md.
+set -eu
+export XDG_RUNTIME_DIR="/run/user/$(id -u)/.flatpak/md.obsidian.Obsidian/xdg-run"
+exec "$HOME/.local/share/flatpak/app/md.obsidian.Obsidian/current/active/files/obsidian-cli" "$@"

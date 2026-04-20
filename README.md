@@ -48,6 +48,10 @@ just vim-plugins    # bootstrap vim-plug plugins
   sudo curl -o /etc/chnroute.txt https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt
   ```
 
+## Docs
+
+- [`docs/obsidian-flatpak.md`](docs/obsidian-flatpak.md) — Obsidian Flatpak quirks (Wayland zoom, CLI socket) and fixes
+
 ## License
 
 MIT

@@ -35,6 +35,11 @@ configs:
     echo "  ~/.zshenv -> $REPO/home/.zshenv"
     ln -sf "$REPO/home/.CLAUDE.md" "$HOME/.CLAUDE.md"
     echo "  ~/.CLAUDE.md -> $REPO/home/.CLAUDE.md"
+    mkdir -p "$HOME/.local/bin"
+    obs="$HOME/.local/bin/obsidian"
+    [[ -e "$obs" && ! -L "$obs" ]] && mv "$obs" "${obs}.bak"
+    ln -sfn "$REPO/home/.local/bin/obsidian" "$obs"
+    echo "  $obs -> $REPO/home/.local/bin/obsidian"
 
 # Deploy system-level files (requires sudo)
 system-files:
