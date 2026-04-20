@@ -23,19 +23,25 @@ Vault: `~/Documents/obsidian-vault` (override with `$OBSIDIAN_VAULT`).
 
    If empty, say so and stop.
 
-2. **List vault folders** to choose from:
+2. **List vault folders** to choose from (skip hidden dirs and managed dirs):
 
    ```
    find "${OBSIDIAN_VAULT:-$HOME/Documents/obsidian-vault}" \
        -maxdepth 1 -mindepth 1 -type d \
-       ! -name '.obsidian' ! -name '_synced' ! -name '_archived' \
+       ! -name '.*' ! -name '_synced' ! -name '_archived' \
        -printf '%f\n' | sort
    ```
 
-3. Ensure output dirs exist:
+3. Ensure the archive and inbox dirs exist. Use whichever `inbox` casing
+   already exists in the vault (`Inbox/` or `inbox/`); if neither, create
+   `Inbox/`:
 
    ```
-   mkdir -p ~/Downloads/_archived "${OBSIDIAN_VAULT:-$HOME/Documents/obsidian-vault}/inbox"
+   mkdir -p ~/Downloads/_archived
+   V="${OBSIDIAN_VAULT:-$HOME/Documents/obsidian-vault}"
+   if   [[ -d "$V/Inbox" ]]; then INBOX="$V/Inbox"
+   elif [[ -d "$V/inbox" ]]; then INBOX="$V/inbox"
+   else mkdir -p "$V/Inbox" && INBOX="$V/Inbox"; fi
    ```
 
 4. **For each source doc:**
@@ -45,6 +51,10 @@ Vault: `~/Documents/obsidian-vault` (override with `$OBSIDIAN_VAULT`).
       ```
       markitdown "$doc" -o "/tmp/ingest-$$-<safe-stem>.md"
       ```
+
+      If `markitdown` fails with `PDFPasswordIncorrect`, or any other
+      conversion error, skip the file and note it in the summary —
+      do NOT archive a source whose conversion failed.
 
    2. Read the top of the output (~80 lines) to get the gist.
    3. Decide the target folder from the step-2 list based on content.
