@@ -12,7 +12,7 @@ knowledge base stays in step with the working tree.
 
 ## Steps
 
-1. Run `~/devcage/bin/sync-notes.sh`.
+1. Run `sync-notes` (from `~/.local/bin/`).
 2. Summarize briefly: which source dirs got synced, how many files changed
    (from rsync's itemized output), and whether any source was skipped.
 3. If rsync exited non-zero, show the error and stop.

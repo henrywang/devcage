@@ -96,15 +96,17 @@ ok "~/.zshenv -> $REPO/home/.zshenv"
 ln -sf "$REPO/home/.CLAUDE.md" "$HOME/.CLAUDE.md"
 ok "~/.CLAUDE.md -> $REPO/home/.CLAUDE.md"
 
-log "Deploying ~/.local/bin/obsidian wrapper (Flatpak CLI bridge)"
+log "Deploying ~/.local/bin/ scripts"
 mkdir -p "$HOME/.local/bin"
-obs_wrapper="$HOME/.local/bin/obsidian"
-if [[ -e "$obs_wrapper" && ! -L "$obs_wrapper" ]]; then
-    warn "$obs_wrapper exists and is not a symlink — backing up to ${obs_wrapper}.bak"
-    mv "$obs_wrapper" "${obs_wrapper}.bak"
-fi
-ln -sfn "$REPO/home/.local/bin/obsidian" "$obs_wrapper"
-ok "$obs_wrapper -> $REPO/home/.local/bin/obsidian"
+for name in obsidian sync-notes daily-kb-hook; do
+    dst="$HOME/.local/bin/$name"
+    if [[ -e "$dst" && ! -L "$dst" ]]; then
+        warn "$dst exists and is not a symlink — backing up to ${dst}.bak"
+        mv "$dst" "${dst}.bak"
+    fi
+    ln -sfn "$REPO/home/.local/bin/$name" "$dst"
+    ok "$dst -> $REPO/home/.local/bin/$name"
+done
 
 log "Deploying Claude Code config"
 mkdir -p "$HOME/.claude/agents"

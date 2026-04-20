@@ -21,8 +21,11 @@ touched.
 Directly:
 
 ```bash
-~/devcage/bin/sync-notes.sh
+sync-notes
 ```
+
+(The script lives in the repo at `home/.local/bin/sync-notes` and is
+symlinked into `~/.local/bin/` by `setup.sh`.)
 
 From Claude Code:
 
@@ -52,5 +55,5 @@ all that's needed.
 ## Editing the source list
 
 Edit the `sources=(...)` array near the top of
-[`bin/sync-notes.sh`](../bin/sync-notes.sh). Each entry is
-`<absolute-path>:<dest-name-under-_synced>`.
+[`home/.local/bin/sync-notes`](../home/.local/bin/sync-notes). Each
+entry is `<absolute-path>:<dest-name-under-_synced>`.

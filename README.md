@@ -51,7 +51,7 @@ just vim-plugins    # bootstrap vim-plug plugins
 ## Docs
 
 - [`docs/obsidian-flatpak.md`](docs/obsidian-flatpak.md) — Obsidian Flatpak quirks (Wayland zoom, CLI socket) and fixes
-- [`docs/obsidian-sync.md`](docs/obsidian-sync.md) — sync `*.md` from source dirs into the vault (`/sync-notes` skill + `bin/sync-notes.sh`)
+- [`docs/obsidian-sync.md`](docs/obsidian-sync.md) — sync `*.md` from source dirs into the vault (`/sync-notes` skill + `~/.local/bin/sync-notes`)
 - [`docs/obsidian-ingest.md`](docs/obsidian-ingest.md) — convert PDFs/Word docs into vault notes, routed by content (`/ingest-docs` skill)
 
 ## License

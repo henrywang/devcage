@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# SessionStart hook — once-per-day Obsidian knowledge-base tick.
+# Runs sync-notes on the first Claude Code session of the day, then
+# nudges Claude to run /ingest-docs if ~/Downloads/ has candidates.
+set -uo pipefail
+
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/obsidian-kb"
+mkdir -p "$STATE_DIR"
+STAMP="$STATE_DIR/daily-tick-$(date +%F)"
+
+[[ -e "$STAMP" ]] && exit 0
+
+touch "$STAMP"
+find "$STATE_DIR" -maxdepth 1 -name 'daily-tick-*' -mtime +30 -delete 2>/dev/null
+
+SYNC_OUT=$("$HOME/.local/bin/sync-notes" 2>&1 | tail -20)
+
+CANDIDATES=$(find "$HOME/Downloads" -maxdepth 1 -type f \
+    \( -iname '*.pdf' -o -iname '*.docx' -o -iname '*.doc' \) 2>/dev/null | wc -l)
+
+if (( CANDIDATES > 0 )); then
+    NUDGE="**${CANDIDATES} document(s) pending ingest** in ~/Downloads/. Run \`/ingest-docs\` to convert and file them."
+else
+    NUDGE="No pending documents in ~/Downloads/."
+fi
+
+CTX=$(printf '# Daily knowledge-base tick (%s)\n\nsync-notes ran on session start.\n\n```\n%s\n```\n\n%s\n' \
+    "$(date +%F)" "$SYNC_OUT" "$NUDGE")
+
+jq -nc --arg ctx "$CTX" '{hookSpecificOutput: {hookEventName: "SessionStart", additionalContext: $ctx}}'
