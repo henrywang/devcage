@@ -41,6 +41,7 @@ golang
 python3-devel
 python3-pip
 python3-virtualenv
+pipx
 
 # Containers & virtualisation
 podman

@@ -42,6 +42,13 @@ else
     ok "claude-code already installed"
 fi
 
+log "Installing markitdown (pipx) for /ingest-docs skill"
+if ! command -v markitdown &>/dev/null; then
+    pipx install 'markitdown[all]'
+else
+    ok "markitdown already installed"
+fi
+
 log "Installing Obsidian via Flatpak"
 if ! flatpak info md.obsidian.Obsidian &>/dev/null 2>&1; then
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -108,6 +115,8 @@ ok "~/.claude/agents/shell-runner.md -> $REPO/home/.claude/agents/shell-runner.m
 mkdir -p "$HOME/.claude/skills"
 ln -sfn "$REPO/home/.claude/skills/sync-notes" "$HOME/.claude/skills/sync-notes"
 ok "~/.claude/skills/sync-notes -> $REPO/home/.claude/skills/sync-notes"
+ln -sfn "$REPO/home/.claude/skills/ingest-docs" "$HOME/.claude/skills/ingest-docs"
+ok "~/.claude/skills/ingest-docs -> $REPO/home/.claude/skills/ingest-docs"
 
 # ============================================================
 # 5. System files
