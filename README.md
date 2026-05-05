@@ -37,7 +37,7 @@ just vim-plugins    # bootstrap vim-plug plugins
 **System configs**
 - `/etc/modules-load.d/l2tp.conf` — L2TP VPN kernel modules
 - `/etc/sudoers.d/wheel-nopasswd` — passwordless sudo for wheel group
-- `/etc/NetworkManager/dispatcher.d/99-cn-split-tunnel.sh` — split-tunnel routing for VPN
+- `/etc/NetworkManager/dispatcher.d/99-cn-split-tunnel.sh` — split-tunnel routing + DNS fix for VPN (see [`docs/vpn-split-tunnel.md`](docs/vpn-split-tunnel.md))
 
 ## Post-setup
 
@@ -50,6 +50,7 @@ just vim-plugins    # bootstrap vim-plug plugins
 
 ## Docs
 
+- [`docs/vpn-split-tunnel.md`](docs/vpn-split-tunnel.md) — L2TP/IPsec split-tunnel routing and DNS fix for GFW-poisoned networks
 - [`docs/obsidian-flatpak.md`](docs/obsidian-flatpak.md) — Obsidian Flatpak quirks (Wayland zoom, CLI socket) and fixes
 - [`docs/obsidian-sync.md`](docs/obsidian-sync.md) — sync `*.md` from source dirs into the vault (`/sync-notes` skill + `~/.local/bin/sync-notes`)
 - [`docs/obsidian-ingest.md`](docs/obsidian-ingest.md) — convert PDFs/Word docs into vault notes, routed by content (`/ingest-docs` skill)
