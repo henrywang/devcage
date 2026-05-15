@@ -34,6 +34,7 @@ zstyle ':completion:*' menu select
 # Spaceship Prompt
 # ============================================================
 SPACESHIP_PROMPT_ORDER=(
+  async         # Async loading indicator
   dir           # Current directory section
   git           # Git section (git_branch + git_status)
   venv          # virtualenv section
