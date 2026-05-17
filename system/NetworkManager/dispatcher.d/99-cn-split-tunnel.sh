@@ -13,20 +13,22 @@ read -r LOCAL_GW LOCAL_DEV < <(
 
 case "$ACTION" in
     vpn-up)
+        resolvectl dns ppp0 8.8.8.8 1.1.1.1
+        resolvectl domain ppp0 '~.'
+        resolvectl default-route wlp2s0 no
         while IFS= read -r subnet; do
             [[ -z "$subnet" || "$subnet" == \#* ]] && continue
             ip route add "$subnet" via "$LOCAL_GW" dev "$LOCAL_DEV" 2>/dev/null
         done < "$CN_LIST"
-        resolvectl dns ppp0 8.8.8.8 1.1.1.1
-        resolvectl domain ppp0 '~.'
         logger "cn-split-tunnel: added China routes via $LOCAL_GW ($LOCAL_DEV), DNS via ppp0"
         ;;
     vpn-down)
+        resolvectl revert ppp0
+        resolvectl default-route wlp2s0 yes
         while IFS= read -r subnet; do
             [[ -z "$subnet" || "$subnet" == \#* ]] && continue
             ip route del "$subnet" 2>/dev/null
         done < "$CN_LIST"
-        resolvectl revert ppp0
         logger "cn-split-tunnel: removed China routes, reverted DNS"
         ;;
 esac

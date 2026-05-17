@@ -27,7 +27,7 @@ setopt HIST_REDUCE_BLANKS
 # ============================================================
 autoload -U colors && colors
 autoload -Uz compinit
-compinit
+compinit -C
 zstyle ':completion:*' menu select
 
 # ============================================================
@@ -55,7 +55,7 @@ bindkey -v
 # Autosuggestion
 # ============================================================
 bindkey '^f' autosuggest-accept
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_STRATEGY=(history)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 

@@ -13,7 +13,7 @@ export ZDOTDIR="${ZDOTDIR:-$HOME/.config/zsh}"
 # ============================================================
 # Secrets are loaded at session startup by load-secrets script.
 # This is a fallback for SSH sessions or if secrets weren't loaded yet.
-if command -v secret-tool &>/dev/null && [[ -n "$WAYLAND_DISPLAY" || -n "$DISPLAY" ]]; then
+if [[ -o interactive ]] && command -v secret-tool &>/dev/null && [[ -n "$WAYLAND_DISPLAY" || -n "$DISPLAY" ]]; then
     _load_secret() {
         local var_name="$1" service="$2" key="$3"
         # Skip if already set (loaded at session startup)
