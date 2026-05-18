@@ -29,6 +29,7 @@ autoload -U colors && colors
 autoload -Uz compinit
 compinit -C
 zstyle ':completion:*' menu select
+zstyle ':vcs_info:*' enable git
 
 # ============================================================
 # Spaceship Prompt
