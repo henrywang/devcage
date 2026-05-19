@@ -1,0 +1,36 @@
+FROM fedora:latest
+
+LABEL org.opencontainers.image.description="Dev environment: Rust, Python, Claude Code, container tools, VM tools"
+
+# ── System packages ───────────────────────────────────────────────────────────
+RUN dnf install -y \
+    # Core CLI
+    git curl wget unzip jq \
+    # Build tools
+    make cmake gcc-c++ pkg-config openssl-devel \
+    # Python
+    python3 python3-pip python3-devel python3-virtualenv pipx \
+    # Container tools (rootless podman-in-container needs fuse-overlayfs)
+    podman buildah skopeo fuse-overlayfs \
+    # VM tools — libvirt-client gives virsh to connect to host libvirtd via socket;
+    # qemu-kvm for direct VM spawning with --device /dev/kvm
+    qemu-kvm libvirt-client libguestfs-tools guestfs-tools \
+    # CLI extras
+    gh just ripgrep fd-find fzf lsd ShellCheck \
+    # Node.js for Claude Code
+    nodejs npm \
+  && dnf clean all
+
+# ── Rust (system-wide so any user gets it) ────────────────────────────────────
+ENV RUSTUP_HOME=/usr/local/rustup \
+    CARGO_HOME=/usr/local/cargo \
+    PATH=/usr/local/cargo/bin:$PATH
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
+    sh -s -- -y --no-modify-path --default-toolchain stable && \
+    rustup component add rustfmt clippy
+
+# ── Claude Code ───────────────────────────────────────────────────────────────
+RUN npm install -g @anthropic-ai/claude-code
+
+WORKDIR /work
+CMD ["bash"]
