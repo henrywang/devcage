@@ -30,7 +30,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     rustup component add rustfmt clippy
 
 # ── Claude Code ───────────────────────────────────────────────────────────────
-RUN npm install -g @anthropic-ai/claude-code
+RUN npm install -g @anthropic-ai/claude-code --registry https://registry.npmmirror.com
 
 WORKDIR /work
 CMD ["bash"]
