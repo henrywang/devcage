@@ -80,10 +80,12 @@ devbox-build:
 #        --security-opt label=disable to relax SELinux for nested containers.
 devbox-run project="$(pwd)":
     podman run -it --rm \
+        --network=host \
         --device /dev/fuse \
         --device /dev/kvm \
         --security-opt label=disable \
         -v "{{project}}":/work \
-        -v "$HOME/.claude/.credentials.json":/root/.claude/.credentials.json \
+        -v "$HOME/.claude":/root/.claude \
+        -v "$HOME/.claude.json":/root/.claude.json \
         -w /work \
         devbox
