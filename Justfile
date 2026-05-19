@@ -72,7 +72,7 @@ vim-plugins:
 
 # Build the devbox container image
 devbox-build:
-    podman build -t devbox containers/devbox/
+    podman build --network=host -t devbox containers/devbox/
 
 # Run devbox with project dir mounted and Claude Code credentials shared.
 # Flags: --device /dev/fuse for rootless podman-in-container;
