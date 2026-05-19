@@ -30,6 +30,8 @@ autoload -Uz compinit
 compinit -C
 zstyle ':completion:*' menu select
 zstyle ':vcs_info:*' enable git
+autoload -Uz vcs_info
+vcs_info 2>/dev/null  # pre-warm: loads functions so Spaceship's async worker inherits them
 
 # ============================================================
 # Spaceship Prompt
@@ -58,7 +60,6 @@ bindkey -v
 bindkey '^f' autosuggest-accept
 ZSH_AUTOSUGGEST_STRATEGY=(history)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 # ============================================================
 # FZF Integration (env vars set via environment.d)
