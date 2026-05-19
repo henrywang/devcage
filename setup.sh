@@ -25,6 +25,13 @@ else
     ok "glab already installed"
 fi
 
+log "Installing starship (official installer)"
+if ! command -v starship &>/dev/null; then
+    curl -sS https://starship.rs/install.sh | sudo sh -s -- --yes
+else
+    ok "starship already installed"
+fi
+
 log "Installing Rust toolchain via rustup"
 if ! command -v rustup &>/dev/null; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
@@ -70,7 +77,7 @@ fi
 # 3. Config symlinks (~/.config/* → repo/config/*)
 # ============================================================
 log "Deploying config symlinks"
-for dir in vim ghostty zsh git; do
+for dir in vim ghostty zsh git starship; do
     src="$REPO/config/$dir"
     dst="$CONFIG_HOME/$dir"
     if [[ -L "$dst" ]]; then
@@ -172,7 +179,6 @@ clone_if_missing() {
 }
 
 clone_if_missing zsh-autosuggestions        https://github.com/zsh-users/zsh-autosuggestions
-clone_if_missing spaceship                   https://github.com/spaceship-prompt/spaceship-prompt
 clone_if_missing zsh-syntax-highlighting     https://github.com/zsh-users/zsh-syntax-highlighting
 clone_if_missing zsh-history-substring-search https://github.com/zsh-users/zsh-history-substring-search
 

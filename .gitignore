@@ -2,7 +2,6 @@
 # Zsh — plugin dirs cloned by setup.sh, runtime files
 # ============================================================
 config/zsh/zsh-autosuggestions/
-config/zsh/spaceship/
 config/zsh/zsh-syntax-highlighting/
 config/zsh/zsh-history-substring-search/
 config/zsh/.zhistory

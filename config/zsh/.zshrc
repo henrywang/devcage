@@ -5,7 +5,9 @@
 # Plugins (loaded from ~/.config/zsh/)
 # ============================================================
 source "$HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$HOME/.config/zsh/spaceship/spaceship.zsh"
+
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+eval "$(starship init zsh)"
 
 # ============================================================
 # Shell History
@@ -29,21 +31,6 @@ autoload -U colors && colors
 autoload -Uz compinit
 compinit -C
 zstyle ':completion:*' menu select
-zstyle ':vcs_info:*' enable git
-autoload -Uz vcs_info
-vcs_info 2>/dev/null  # pre-warm: loads functions so Spaceship's async worker inherits them
-
-# ============================================================
-# Spaceship Prompt
-# ============================================================
-SPACESHIP_PROMPT_ORDER=(
-  async         # Async loading indicator
-  dir           # Current directory section
-  git           # Git section (git_branch + git_status)
-  venv          # virtualenv section
-  line_sep      # Line break
-  char          # Prompt character
-)
 
 # ============================================================
 # Options
